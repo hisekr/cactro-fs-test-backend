@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS logs (
     id SERIAL PRIMARY KEY,
+    video_id VARCHAR(255),
     event_type VARCHAR(255) NOT NULL,
     details JSONB,
     timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP

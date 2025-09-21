@@ -42,19 +42,37 @@ export const getVideoDetails = async (videoId) => {
 
 export const updateVideoMetadata = async (videoId, title, description) => {
   try {
+    // Get current video details
+    const current = await youtube.videos.list({
+      part: ["snippet"],
+      id: [videoId],
+    });
+
+    if (!current.data.items || current.data.items.length === 0) {
+      throw new Error("Video not found");
+    }
+
+    const snippet = current.data.items[0].snippet;
+
     const res = await youtube.videos.update({
       part: ["snippet"],
       requestBody: {
         id: videoId,
-        snippet: { title, description },
+        snippet: {
+          title: title || snippet.title,
+          description: description || snippet.description,
+          categoryId: snippet.categoryId, 
+        },
       },
     });
+
     return res.data;
   } catch (err) {
     console.error("updateVideoMetadata error:", err);
     throw err;
   }
 };
+
 
 export const listComments = async (videoId) => {
   try {
