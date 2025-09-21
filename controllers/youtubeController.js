@@ -25,21 +25,6 @@ export const fetchVideo = async (req, res) => {
   }
 };
 
-// export const editVideo = async (req, res) => {
-//   const { videoId, title, description } = req.body;
-//    if (!videoId || (!title && !description)) {
-//     return res.status(400).json({ error: "Missing videoId or data to update" });
-//   }
-//   try {
-//     const updated = await updateVideoMetadata(videoId, title, description);
-//     await logEvent("VIDEO_UPDATED", { title, description }, videoId);
-//     res.json({ video: updated });
-//   } catch (err) {
-//     console.error("editVideo error:",  err.response?.data || err.message);
-//     res.status(500).json({ video: null });
-//   }
-// };
-
 export const editVideo = async (req, res) => {
   const { videoId, title, description } = req.body;
   if (!videoId || (!title && !description)) {
@@ -124,19 +109,6 @@ export const addNote = async (req, res) => {
     res.status(500).json({ note: null });
   }
 };
-
-// export const getLogs = async (req, res) => {
-//   try {
-//     const { rows } = await pool.query(
-//       "SELECT * FROM logs WHERE video_id=$1 ORDER BY timestamp DESC",
-//       [req.query.videoId]
-//     );
-//     res.json({ logs: rows });
-//   } catch (err) {
-//     console.error("getLogs error:", err);
-//     res.status(500).json({ logs: [] });
-//   }
-// };
 
 export const getLogs = async (req, res) => {
   const { videoId } = req.query;

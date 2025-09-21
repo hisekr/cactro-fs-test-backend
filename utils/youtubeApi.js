@@ -42,7 +42,6 @@ export const getVideoDetails = async (videoId) => {
 
 export const updateVideoMetadata = async (videoId, title, description) => {
   try {
-    // Get current video details
     const current = await youtube.videos.list({
       part: ["snippet"],
       id: [videoId],
