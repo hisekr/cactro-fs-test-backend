@@ -2,7 +2,6 @@ import pool from "../db/pool.js";
 
 export const logEvent = async (eventType, details, videoId = null) => {
   try {
-    // Postgres JSONB must receive a string or JSON
     await pool.query(
       `INSERT INTO logs (video_id, event_type, details) VALUES ($1, $2, $3)`,
       [videoId, eventType, JSON.stringify(details)]

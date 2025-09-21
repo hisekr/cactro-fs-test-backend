@@ -13,21 +13,17 @@ import {
 
 const router = express.Router();
 
-// --- Videos ---
-router.get("/my-videos", fetchMyVideos);     // GET all uploaded videos
-router.get("/video", fetchVideo);            // GET details of a single video by ?videoId=...
-router.put("/video", editVideo);             // PUT to edit title/description
+router.get("/my-videos", fetchMyVideos);     
+router.get("/video", fetchVideo);            
+router.put("/video", editVideo);             
 
-// --- Comments ---
-router.get("/comments", getComments);        // GET comments for ?videoId=...
-router.post("/comments", addComment);       // POST { videoId, text }
-router.delete("/comments", removeComment);  // DELETE { videoId, commentId }
+router.get("/comments", getComments);       
+router.post("/comments", addComment);       
+router.delete("/comments", removeComment);  
 
-// --- Notes ---
-router.get("/notes", getNotes);             // GET notes for ?videoId=...
-router.post("/notes", addNote);             // POST { videoId, text }
+router.get("/notes", getNotes);             
+router.post("/notes", addNote);             
 
-// --- Logs ---
-router.get("/logs", getLogs);               // GET logs for ?videoId=...
+router.get("/logs", getLogs);               
 
 export default router;

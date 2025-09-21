@@ -5,7 +5,6 @@ import {
 } from "../utils/youtubeApi.js";
 import { logEvent } from "../services/logsService.js";
 
-// --- Videos ---
 export const fetchMyVideos = async (req, res) => {
   try {
     const videos = await getMyVideos();
@@ -38,7 +37,6 @@ export const editVideo = async (req, res) => {
   }
 };
 
-// --- Comments ---
 export const getComments = async (req, res) => {
   try {
     const comments = await listComments(req.query.videoId);
@@ -73,7 +71,6 @@ export const removeComment = async (req, res) => {
   }
 };
 
-// --- Notes ---
 export const getNotes = async (req, res) => {
   try {
     const { rows } = await pool.query(
@@ -102,7 +99,6 @@ export const addNote = async (req, res) => {
   }
 };
 
-// --- Logs ---
 export const getLogs = async (req, res) => {
   try {
     const { rows } = await pool.query(

@@ -3,7 +3,6 @@ import youtubeOauth2Client from "../config/youtubeAuth.js";
 
 const youtube = google.youtube({ version: "v3", auth: youtubeOauth2Client });
 
-// --- Fetch my uploaded videos ---
 export const getMyVideos = async () => {
   try {
     const res = await youtube.channels.list({ part: ["contentDetails"], mine: true });
@@ -27,7 +26,6 @@ export const getMyVideos = async () => {
   }
 };
 
-// --- Get details of a single video ---
 export const getVideoDetails = async (videoId) => {
   try {
     const res = await youtube.videos.list({
@@ -42,7 +40,6 @@ export const getVideoDetails = async (videoId) => {
   }
 };
 
-// --- Update video title/description ---
 export const updateVideoMetadata = async (videoId, title, description) => {
   try {
     const res = await youtube.videos.update({
@@ -59,7 +56,6 @@ export const updateVideoMetadata = async (videoId, title, description) => {
   }
 };
 
-// --- List comments ---
 export const listComments = async (videoId) => {
   try {
     const res = await youtube.commentThreads.list({
@@ -74,7 +70,6 @@ export const listComments = async (videoId) => {
   }
 };
 
-// --- Insert comment ---
 export const insertComment = async (videoId, text) => {
   try {
     const res = await youtube.commentThreads.insert({
@@ -93,7 +88,6 @@ export const insertComment = async (videoId, text) => {
   }
 };
 
-// --- Delete comment ---
 export const deleteComment = async (commentId) => {
   try {
     await youtube.comments.delete({ id: commentId });
